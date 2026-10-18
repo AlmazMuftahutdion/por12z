@@ -59,7 +59,7 @@ val CreamChip = Color(0xFFE6E2D3)
 val GrayText = Color(0xFF9A9A9A)
 val LightBorder = Color(0xFFE8D9A8)
 
-// Фон с узором (картинка img.png)
+
 @Composable
 fun DarkScreenBackground(content: @Composable BoxScope.() -> Unit) {
     Box(
@@ -72,15 +72,12 @@ fun DarkScreenBackground(content: @Composable BoxScope.() -> Unit) {
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
-            alpha = 0.40f
+            alpha = 0.10f
         )
         content()
     }
 }
 
-// =====================================================================
-//                            ГЛАВНЫЙ ЭКРАН
-// =====================================================================
 
 private data class ComponentItem(val title: String, val iconRes: Int)
 
@@ -94,6 +91,7 @@ private val componentItems = listOf(
     ComponentItem("Оперативная память", R.drawable.operativka),
     ComponentItem("Накопители", R.drawable.nacopiteli)
 )
+
 
 @Composable
 fun MainScreen(
@@ -396,7 +394,6 @@ private fun ComponentRow(title: String, iconRes: Int, onAdd: () -> Unit) {
             .padding(vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Иконка компонента
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
@@ -409,7 +406,7 @@ private fun ComponentRow(title: String, iconRes: Int, onAdd: () -> Unit) {
             fontSize = 13.sp,
             modifier = Modifier.weight(1f)
         )
-        Text(text = "Обязательно", color = GrayText, fontSize = 9.sp)
+        Text(text = "Обязательно", color = Color.White, fontSize = 12.sp)
         Spacer(Modifier.width(8.dp))
         Box(
             modifier = Modifier
@@ -418,17 +415,13 @@ private fun ComponentRow(title: String, iconRes: Int, onAdd: () -> Unit) {
                 .clickable(onClick = onAdd)
                 .padding(horizontal = 8.dp, vertical = 5.dp)
         ) {
-            Text(text = "Добавить", color = Color.White, fontSize = 9.sp)
+            Text(text = "Добавить", color = Color.White, fontSize = 12.sp)
         }
     }
 }
 
 private fun formatMoney(value: Int): String =
     value.toString().reversed().chunked(3).joinToString(" ").reversed()
-
-// =====================================================================
-//                              ПРОФИЛЬ
-// =====================================================================
 
 @Composable
 fun ProfileScreen(

@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import com.example.test.ui.theme.TestTheme
 
 // Все экраны приложения
-enum class Screen { Login, Register, Main, Profile }
+enum class Screen { Login, Register, Main, Profile, MyBuilds, UsersBuilds }
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +30,13 @@ class MainActivity : ComponentActivity() {
                     var screen by rememberSaveable { mutableStateOf(Screen.Login) }
 
                     // Кнопка «Назад» на телефоне
-                    BackHandler(enabled = screen == Screen.Register || screen == Screen.Profile) {
-                        screen = if (screen == Screen.Register) Screen.Login else Screen.Main
+                    BackHandler(enabled = screen != Screen.Login && screen != Screen.Main) {
+                        screen = when (screen) {
+                            Screen.Register -> Screen.Login
+                            Screen.Profile -> Screen.Main
+                            Screen.MyBuilds, Screen.UsersBuilds -> Screen.Profile
+                            else -> screen
+                        }
                     }
 
                     Crossfade(
@@ -62,7 +67,21 @@ class MainActivity : ComponentActivity() {
                             Screen.Profile -> ProfileScreen(
                                 modifier = pad,
                                 onMainMenuClick = { screen = Screen.Main },
+                                onMyBuildsClick = { screen = Screen.MyBuilds },
+                                onUsersBuildsClick = { screen = Screen.UsersBuilds },
                                 onLogoutClick = { screen = Screen.Login }
+                            )
+
+                            Screen.MyBuilds -> MyBuildsScreen(
+                                modifier = pad,
+                                onBackClick = { screen = Screen.Profile },
+                                onOpenInConfigurator = { screen = Screen.Main }
+                            )
+
+                            Screen.UsersBuilds -> UsersBuildsScreen(
+                                modifier = pad,
+                                onBackClick = { screen = Screen.Profile },
+                                onOpenInConfigurator = { screen = Screen.Main }
                             )
                         }
                     }
