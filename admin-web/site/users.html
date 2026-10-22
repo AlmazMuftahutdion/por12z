@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700;1,800&family=Onest:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>Пользователи — Por12z</title>
+</head>
+
+<body>
+    <div id="app">
+        <aside><img src="img/logo.png" alt="Por12z">
+            <nav><a class="nav" href="index.html" style="display:block">Статистика</a><a class="nav"
+                    href="components.html" style="display:block">Комплектующие</a><a class="nav on" href="users.html"
+                    style="display:block">Пользователи</a><a class="nav" href="builds.html" style="display:block">Сборки
+                    в галерее</a><a class="nav" href="log.html" style="display:block">Журнал событий</a><a class="nav"
+                    href="news.html" style="display:block">Новости</a></nav>
+            <div class="me">Соколов Андрей<br><a class="btn sm" href="login.html"
+                    style="display:inline-block;margin-top:8px;text-decoration:none">Выйти</a></div>
+        </aside>
+        <main>
+            <div class="hd">
+                <h2>Пользователи</h2>
+                <div class="tools"><input placeholder="Поиск по ФИО или почте"></div>
+            </div>
+            <div class="tw">
+                <table>
+                    <tr>
+                        <th>Код</th>
+                        <th>ФИО</th>
+                        <th>Почта</th>
+                        <th>Роль</th>
+                        <th>Регистрация</th>
+                        <th>Статус</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Соколов Андрей Игоревич</td>
+                        <td>admin@por12z.ru</td>
+                        <td>Администратор</td>
+                        <td>2026-01-10</td>
+                        <td><span class="tag ok">Активен</span></td>
+                        <td><span class="spec">Нельзя заблокировать</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Иванов Пётр Сергеевич</td>
+                        <td>ivanov@mail.ru</td>
+                        <td>Клиент</td>
+                        <td>2026-03-02</td>
+                        <td><span class="tag ok">Активен</span></td>
+                        <td class=a><button class="btn sm dng">Заблокировать</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Белов Денис Павлович</td>
+                        <td>belov.d@yandex.ru</td>
+                        <td>Клиент</td>
+                        <td>2026-05-21</td>
+                        <td><span class="tag er">Заблокирован</span></td>
+                        <td class=a><button class="btn sm">Разблокировать</button></td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

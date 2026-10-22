@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700;1,800&family=Onest:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>Комплектующие — Por12z</title>
+</head>
+
+<body>
+    <div id="app">
+        <aside><img src="img/logo.png" alt="Por12z">
+            <nav><a class="nav" href="index.html" style="display:block">Статистика</a><a class="nav on"
+                    href="components.html" style="display:block">Комплектующие</a><a class="nav" href="users.html"
+                    style="display:block">Пользователи</a><a class="nav" href="builds.html" style="display:block">Сборки
+                    в галерее</a><a class="nav" href="log.html" style="display:block">Журнал событий</a><a class="nav"
+                    href="news.html" style="display:block">Новости</a></nav>
+            <div class="me">Соколов Андрей<br><a class="btn sm" href="login.html"
+                    style="display:inline-block;margin-top:8px;text-decoration:none">Выйти</a></div>
+        </aside>
+        <main>
+            <div class="hd">
+                <h2>Комплектующие</h2>
+                <div class="tools"><input placeholder="Поиск по названию"><select>
+                        <option>Все категории</option>
+                        <option>Процессор</option>
+                        <option>Видеокарта</option>
+                        <option>Материнская плата</option>
+                        <option>Оперативная память</option>
+                        <option>Накопитель</option>
+                        <option>Блок питания</option>
+                        <option>Корпус</option>
+                        <option>Система охлаждения</option>
+                    </select><a class="btn" href="#import" style="text-decoration:none">Импорт</a><a class="btn"
+                        href="#export" style="text-decoration:none">Экспорт</a><a class="btn pri" href="#edit"
+                        style="text-decoration:none">Добавить</a></div>
+            </div>
+            <div class="tw">
+                <table>
+                    <tr>
+                        <th>Код</th>
+                        <th>Категория</th>
+                        <th>Наименование</th>
+                        <th>Характеристики</th>
+                        <th>Цена</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Процессор</td>
+                        <td><b>Intel</b> Core i5-13600K</td>
+                        <td><span class="spec">Сокет: LGA1700 · Ядер: 14 · Частота: 3.5 · TDP: 125</span></td>
+                        <td>24 990 ₽</td>
+                        <td class=a><button class="btn sm">Изменить</button> <button class="btn sm dng">Удалить</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Видеокарта</td>
+                        <td><b>NVIDIA</b> GeForce RTX 4070</td>
+                        <td><span class="spec">Память: 12 · TDP: 200 · Длина: 244</span></td>
+                        <td>58 990 ₽</td>
+                        <td class=a><button class="btn sm">Изменить</button> <button class="btn sm dng">Удалить</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Материнская плата</td>
+                        <td><b>ASUS</b> TUF Gaming B760-Plus</td>
+                        <td><span class="spec">Сокет: LGA1700 · Форм-фактор: ATX · Тип памяти: DDR5</span></td>
+                        <td>16 990 ₽</td>
+                        <td class=a><button class="btn sm">Изменить</button> <button class="btn sm dng">Удалить</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </div>
+    <!-- Модальные окна: открываются через :target, замените на свою логику -->
+    <div class="ov" id="edit">
+        <div class="md">
+            <h3>Новый компонент</h3><label>Категория<select>
+                    <option>Процессор</option>
+                    <option>Видеокарта</option>
+                    <option>Материнская плата</option>
+                    <option>Оперативная память</option>
+                    <option>Накопитель</option>
+                    <option>Блок питания</option>
+                    <option>Корпус</option>
+                    <option>Система охлаждения</option>
+                </select></label>
+            <div class="row"><label>Производитель<input></label><label>Модель<input></label></div>
+            <div class="row">
+                <!-- поля характеристик зависят от категории --><label>Сокет<input></label><label>Ядер<input></label><label>Частота,
+                    ГГц<input></label><label>TDP, Вт<input></label></div><label>Цена, ₽ (не менее 100)<input
+                    type="number" min="100"></label>
+            <div class="err">Цена компонента не может быть меньше 100 ₽</div>
+            <div class="mf"><a class="btn" href="#" style="text-decoration:none">Отмена</a><button
+                    class="btn pri">Сохранить</button></div>
+        </div>
+    </div>
+    <div class="ov" id="import">
+        <div class="md">
+            <h3>Импорт каталога</h3><label>Файл JSON<input type="file"></label><label>Или вставьте JSON<textarea
+                    rows="8"></textarea></label>
+            <div class="mf"><a class="btn" href="#" style="text-decoration:none">Отмена</a><button
+                    class="btn pri">Импортировать</button></div>
+        </div>
+    </div>
+    <div class="ov" id="export">
+        <div class="md">
+            <h3>Экспорт каталога</h3><label>JSON<textarea rows="10" readonly></textarea></label>
+            <div class="mf"><a class="btn" href="#" style="text-decoration:none">Закрыть</a><button
+                    class="btn pri">Скачать</button></div>
+        </div>
+    </div>
+    <div class="ov" id="delete">
+        <div class="md">
+            <h3>Подтверждение</h3>
+            <p>Удалить компонент из каталога?</p>
+            <div class="mf"><a class="btn" href="#" style="text-decoration:none">Отмена</a><button
+                    class="btn pri">Удалить</button></div>
+        </div>
+    </div>
+</body>
+
+</html>
